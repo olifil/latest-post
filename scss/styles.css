@@ -1,0 +1,28 @@
+.blog-latest-posts:nth-child(odd) {
+  background-color: blueviolet;
+}
+
+.blog-latest-posts:nth-child(even) {
+  background-color: greenyellow;
+}
+
+.blog-latest-posts h1.blog-title {
+  font-size: 1.6rem;
+}
+
+.blog-latest-posts h1.blog-title:before {
+  display: none;
+}
+
+.blog-latest-posts h1.blog-title a {
+  text-decoration: none !important;
+}
+
+.blog-latest-posts li {
+  list-style-type: none;
+}
+
+.blog-latest-posts .error-msg {
+  text-align: center;
+}
+/*# sourceMappingURL=styles.css.map */

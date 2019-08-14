@@ -1,0 +1,29 @@
+.blog-latest-posts {
+
+    &:nth-child(odd){
+        background-color: blueviolet;
+    }
+    &:nth-child(even){
+        background-color: greenyellow;
+    }
+
+    & h1.blog-title {
+        font-size: 1rem * 1.6;
+
+        &:before {
+            display: none;
+        }
+
+        & a {
+            text-decoration: none !important;
+        }
+    }
+
+    & li {
+        list-style-type: none;
+    }
+
+    & .error-msg {
+        text-align: center;
+    }
+}
