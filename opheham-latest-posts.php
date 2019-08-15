@@ -1,20 +1,20 @@
 <?php
 /**
- * @package Latest-Post
+ * @package Opheham-Latest-Posts
  * @version dev
  */
 /*
-Plugin Name: Lastest Posts
+Plugin Name: Opheham Lastest Posts
 Plugin URI : https://opheham.fr/latest-post/
-Description:  Plugin pour les sites mu. Shortcode permettant d'ajouter un bloc affichant les 5 derniers articles du blog d'id passé en paramètres.
-Author:       Olivier Fillol
-Author URI:   https://opheham.fr/olivier-fillol
-Version: dev
+Description: Plugin pour les multi sites. Ajoute un shortcode permettant d'ajouter un bloc affichant les 5 derniers articles du blog d'id passé en paramètres.
+Author:      Olivier Fillol
+Author URI:  https://opheham.fr/olivier-fillol
+Version:     dev
 */
 
 defined( 'ABSPATH' ) or die( 'Cheatin&#8217; uh?' );
 
-function afficherTexte($atts) {
+function latestPost($atts) {
 
     extract(shortcode_atts(
         array(
@@ -79,25 +79,8 @@ function plugin_enqueue_styles() {
     wp_enqueue_style( 'plugin-styles',  plugins_url( 'scss/styles.css', __FILE__ ), array(), null );   // The child theme stylesheet
 }
 
-function latestPosts_admin_notices() {
-    if ( ! is_plugin_active( 'latest-posts.php' ) && isset( $_GET['latestpostsmsg'] ) ) {
-        echo '<div class="error"><p>Wordpress doit être en version multisite pour que ce plugin puisse être activé.</p></div>';
-    }
-}
-
-function activate_latestPosts() {
-    if (! is_multisite()) {
-        wp_redirect( self_admin_url('plugins.php?latestpostsmsg=1') );
-        exit;
-    }
-}
-
-add_action( 'admin_notices', 'latestPosts_admin_notices' );
-
-add_action( 'activate_plugin', 'activate_latestPosts' );
-
 // Insertion de la feuille de styles
 add_action( 'wp_enqueue_scripts', 'plugin_enqueue_styles' );
 
 // Création du shortcode
-add_shortcode('showBlogLatestPosts', 'afficherTexte');
+add_shortcode('showBlogLatestPosts', 'latestPost');
